@@ -1,0 +1,21 @@
+.right {
+    float: right;
+
+
+}
+
+.left {
+    float: left;
+    width: 400px;
+    
+}
+
+img {
+    margin: 10px;
+    width: 200px;
+    
+}
+
+.stop {
+    clear: both;
+}

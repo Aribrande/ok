@@ -1,0 +1,126 @@
+/* h1.animal1 {
+    color:teal;
+} */
+
+.predator.animal1 {
+    padding: 8px;
+    border: 1px solid gray;
+    color:hotpink;
+}
+
+#a1 {
+    color:tomato;
+}
+
+.animal1 {
+    color: thistle;
+}
+
+h1.animal1 span {
+    color: indigo;
+}
+
+.animal1 span {
+    color: yellowgreen;
+}
+
+.animal2 {
+    color: tomato;
+}
+.animal3 {
+    color: yellowgreen;
+}
+
+
+
+
+
+
+span {
+    color: red;
+}
+i {
+    color: blue;
+}
+code {
+    color: green;
+}
+
+body {
+    background-color: mistyrose;
+    letter-spacing: -.31em;
+    text-rendering: optimizespeed;
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+    zoom: 1;
+    letter-spacing: normal;
+    text-rendering: auto;
+}
+
+
+.box {
+    border: 1px solid hotpink;
+    background-color: lightblue;
+    /* padding: 5px; */
+    /* margin: 5px; */
+    height: 180px;
+    width: 50%;
+    display: inline-block;
+    
+}
+
+.box1 {
+    border: 1px solid hotpink;
+    background-color: lightblue;
+    /* padding: 5px; */
+    /* margin: 5px; */
+    height: 180px;
+    width: 33.33333%;
+    display: inline-block;    
+}
+
+.box2 {
+    border: 1px solid hotpink;
+    background-color: lightblue;
+    /* padding: 5px; */
+    /* margin: 5px; */
+    height: 180px;
+    width: 25%;
+    display: inline-block;
+}
+
+.box3 {
+    border: 1px solid hotpink;
+    background-color: lightslategray;
+    /* padding: 5px; */
+    /* margin: 5px; */
+    height: 180px;
+    width: 100%;
+    display: inline-block;
+}
+
+.box span, .box1 span, .box2 span, .box3 span {
+    /* background-color: lightslategray; */
+    /* color: lemonchiffon; */
+    display: block;
+    /* width: 40%; */
+    /* height: 20px; */
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100px;
+    position: relative;
+    border-radius: 10px;
+    top: calc(50% - 75px);
+
+}
+
+.box img, .box1 img, .box2 img, .box3 img {
+    width: 200px;
+}
+
+/* .box1 img {
+    width: 200px;
+} */

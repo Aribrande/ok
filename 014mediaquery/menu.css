@@ -1,0 +1,82 @@
+body, header, nav, ul, li {
+    padding: 0;
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header li {
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid black;
+    background-color:darkblue;
+    display: block;
+    width: 100%;
+    float: left;
+    transition: all .3s;
+}
+
+header li:hover {
+    background-color:rgb(91, 219, 236);
+}
+
+header li a {
+    text-decoration: none;
+    color:crimson;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+header li:hover a {
+    border-bottom: 1px solid crimson;
+}
+
+ul {
+    list-style: none;
+    background-color:darkblue;
+}
+ul::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+@media screen and (min-width: 500px) {
+    header li {
+        width: 50%;
+    }
+    [title~="third"] {
+        width: 100%;
+}
+}
+
+
+@media screen and (min-width: 1000px) {
+    header li {
+           width: 33.33333%;
+    }
+    [title~="third"] {
+        width: 33.33333%;
+}
+    }
+/* 
+    header li a {
+        font-weight: 700;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    header li:hover {
+        background-color:darkblue;
+    }
+
+    header li:hover a {
+        border-bottom: none;
+    } */
+
+

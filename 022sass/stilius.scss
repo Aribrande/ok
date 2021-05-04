@@ -1,0 +1,28 @@
+@import 'papild/var';
+
+
+.one {
+    &.super {
+        h1 {
+            color:aquamarine;
+            display: $displejus;
+            border: $bortelis;
+            span {
+                color:blueviolet;
+                display: $displejus;
+                border: $bortelis;
+                i {
+                    color:chocolate;
+                    display: $displejus;
+                    border: $bortelis;
+                }
+            }
+        }
+    }
+}
+
+span {
+    color: crimson;
+}
+
+@import 'papild/stilius15';

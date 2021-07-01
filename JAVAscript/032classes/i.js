@@ -1,78 +1,79 @@
 
-// // pagrindinis metodas - constructor. Jia pasileidzia pats. 
+class Tv {
+    constructor(is, kanalai, title) {
+        this.istrizaine = is;
+        this.kanalai = kanalai;
+        this.title = title;
+    }
 
-// class tv {
+    putIn() {
+        localStorage.setItem(this.title, JSON.stringify(this));
+    }
 
-//     constructor(is, kanalai, title) {
-//         this.istrizaine = is;
-//         this.kanalai = kanalai;
-//         this.title = title;
-//         this.uuid = 'tv-' + this.rand(1000000, 9999999)
-//     }
-
-//     rand(min, max) {
-//         min = Math.ceil(min);
-//         max = Math.floor(max);
-//         return Math.floor(Math.random() * (max - min + 1)) + min;
-//     }
-//     save() {
-//         localStorage.setItem(this.title, JSON.stringify(this));
- 
-//     }
-// }
+    getBack()  {
+        let out3 = localStorage.getItem(this.title);
+        out3 = JSON.parse(out3);
+        return [out3.istrizaine, out3.kanalai, out3.title];
+    }
 
 
-// const tv1 = new tv(78, ['LTV', 'TV3', 'LNK']); // 78 patenka i constructor(is)
-// const tv2 = new tv(32, ['Discovery', 'GC', 'MTV']);
+}
+
+const tv1 = new Tv(78, ['LTV', 'TV3', 'LNK'], 'tv1');
+const tv2 = new Tv(32, ['Discovery', 'GC', 'MTV'], 'tv2');
+
+
+tv1.putIn();
+let out1 = new Tv(...tv1.getBack());
+out1.istrizaine++;
+out1.putIn();
+out1 = new Tv(...out1.getBack());
+
+tv2.putIn();
+let out2 = new Tv(...tv2.getBack());
+out2.istrizaine++;
+out2.putIn();
+out2 = new Tv(...out2.getBack());
+
+// console.log(out1);
+// console.log(out2);
 
 
 
-// console.log(tv1);
-// console.log(tv2);
 
-// console.log(tv1.istrizaine);
+//-----------------------------------------------
 
-// //-----neklasiniai-------------------
+const tv3 = {
+    istrizaine: 78,
+    kanalai: ['LTV', 'TV3', 'LNK']
+};
+const tv4 = {
+    istrizaine: 32,
+    kanalai: ['Discovery', 'GC', 'MTV']
+};
 
-// const tv3 = {
-//     istrizaine: 78,
-//     kanalai: ['LTV', 'TV3', 'LNK']
-// }
+localStorage.setItem('tv3', JSON.stringify(tv3));
+let out3 = localStorage.getItem('tv3');
+out3 = JSON.parse(out3);
+out3.istrizaine++;
+localStorage.setItem('tv3', JSON.stringify(out3));
+out3 = localStorage.getItem('tv3');
+out3 = JSON.parse(out3);
 
-// const tv4 = {
-//     istrizaine: 32,
-//     kanalai: ['Discovery', 'GC', 'MTV']
-// }
-
-// console.log(tv3);
-// console.log(tv4);
-
-// localStorage.setItem('tv3', JSON.stringify(tv3));
-// let out3 = localStorage.getItem('tv3');
-// out3 = JSON.parse(out3);
-// out3.istrizaine ++;
-// localStorage.setItem('tv3', JSON.stringify(out3));
-// out3 = localStorage.getItem('tv3');
-// out3 = JSON.parse(out3);
-
-
-// localStorage.setItem('tv4', JSON.stringify(tv4));
-// let out4 = localStorage.getItem('tv4');
-// out4 = JSON.parse(out4);
-// out4.istrizaine ++;
-// localStorage.setItem('tv4', JSON.stringify(out4));
-// out4 = localStorage.getItem('tv4');
-// out4 = JSON.parse(out4);
+localStorage.setItem('tv4', JSON.stringify(tv4));
+let out4 = localStorage.getItem('tv4');
+out4 = JSON.parse(out4);
+out4.istrizaine++;
+localStorage.setItem('tv4', JSON.stringify(out4));
+out4 = localStorage.getItem('tv4');
+out4 = JSON.parse(out4);
 
 
 // console.log(out3);
 // console.log(out4);
 
 
-
-//workshop. issortint array ir atspausdinti
 class Sorter {
-
     constructor(ar) {
         this.arr = ar;
     }
@@ -81,21 +82,68 @@ class Sorter {
         return this.arr.slice(); 
     }
     sortByDesc() {
-        this.arr.sort((a, b) => a > b ? -1 : 0);
-        return this.arr.slice(); 
-
+        this.arr.sort((a, b) => a > b ? -1 : 1);
+        return this.arr.slice();
     }
-    sortByDescLength() {// pagal stringo ilgį DESC
-        this.arr.sort((a, b) => a.length - b.length);
+    sortByDescLength() {
+        this.arr.sort((a, b) => b.length - a.length);
         return this.arr.slice(); 
-
     }
-    sortByLastLet() { // pagal paskutinį simbolį ASC
-        this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 0);
-        return this.arr.slice(); 
-
+    sortByAscLast() {
+        this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1);
+        return this.arr.slice();
     }
+}
 
+// class SetSorter {
+//     constructor(ar) {
+//         this.arr = [...ar];
+//     }
+//     sortByAsc() {
+//         this.arr.sort();
+//         return new Set(this.arr.slice()); 
+//     }
+//     sortByDesc() {
+//         this.arr.sort((a, b) => a > b ? -1 : 1);
+//         return new Set(this.arr.slice()); 
+//     }
+//     sortByDescLength() {
+//         this.arr.sort((a, b) => b.length - a.length);
+//         return new Set(this.arr.slice());  
+//     }
+//     sortByAscLast() {
+//         this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1);
+//         return new Set(this.arr.slice()); 
+//     }
+// }
+
+// sprendimas islaikant originalu seta
+class SetSorter {
+    constructor(ar) {
+        this.set = ar;
+        this.arr = [...ar];
+    }
+    arrayToSet() {
+        this.set.clear();
+        this.arr.forEach(v => this.set.add(v));
+        return this.set;
+    }
+    sortByAsc() {
+        this.arr.sort();
+        return this.arrayToSet(); 
+    }
+    sortByDesc() {
+        this.arr.sort((a, b) => a > b ? -1 : 1);
+        return this.arrayToSet();
+    }
+    sortByDescLength() {
+        this.arr.sort((a, b) => b.length - a.length);
+        return this.arrayToSet(); 
+    }
+    sortByAscLast() {
+        this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1);
+        return this.arrayToSet();
+    }
 }
 
 const sorter = new Sorter(['LTV', 'TV3', 'LNK', 'Polonia', 'SAT1']);
@@ -103,33 +151,72 @@ const sorter = new Sorter(['LTV', 'TV3', 'LNK', 'Polonia', 'SAT1']);
 console.log(sorter.sortByAsc());
 console.log(sorter.sortByDesc());
 console.log(sorter.sortByDescLength());
-console.log(sorter.sortByLastLet());
+console.log(sorter.sortByAscLast());
 
-// 2. Sukurti klasę SetSorter, kuri turi tuos pačius rūšiavimo metodus, bet jos savybe arr yra Set tipo objektas.
 
-class setSorter {
+// console.log(['a','A',2].sort());
 
-    constructor(ar) {
-        this.arr = ar;
+const original = new Set(['LTV', 'TV3', 'LNK', 'Polonia', 'SAT1']);
+console.log('original', original);
+const sorter2 = new SetSorter(original);
+console.log(sorter2.sortByAsc());
+console.log(sorter2.sortByDesc());
+console.log(sorter2.sortByDescLength());
+// console.log(sorter2.sortByAscLast());
+
+
+// 1. Sukurti klasę Kibiras1. Konstruktoriuje 
+// Sukurti savybę akmenuKiekis  kuri lygi 0. Parašyti 
+// šiai savybei metodus prideti1Akmeni() pridetiDaugAkmenu
+// ($kiekis) ir metodą išvedantį akmenų kiekį į 
+// konsolę- kiekPririnktaAkmenu(). Sukurti kibiro 
+// objektą ir pademonstruoti akmenų rinkimą į kibirą ir 
+// rezultatų išvedimą.
+
+class kibiras1 {
+    constructor(akmenukiekis) {
+        const akmenukiekis = 0;
+       
     }
-    sortByAsc() {
+    prideti1akmeni() {
+        const sumstones = akmenukiekis++;
+        return akmenukiekis;
+    }
+    pridetidaugakmenu() {
+
         this.arr.sort();
-        return this.arr.slice(); 
+        return this.arrayToSet(); 
     }
     sortByDesc() {
-        this.arr.sort((a, b) => a > b ? -1 : 0);
-        return this.arr.slice(); 
-
+        this.arr.sort((a, b) => a > b ? -1 : 1);
+        return this.arrayToSet();
     }
-    sortByDescLength() {// pagal stringo ilgį DESC
-        this.arr.sort((a, b) => a.length - b.length);
-        return this.arr.slice(); 
-
+    sortByDescLength() {
+        this.arr.sort((a, b) => b.length - a.length);
+        return this.arrayToSet(); 
     }
-    sortByLastLet() { // pagal paskutinį simbolį ASC
-        this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 0);
-        return this.arr.slice(); 
-
+    sortByAscLast() {
+        this.arr.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1);
+        return this.arrayToSet();
     }
-
 }
+
+const stones = new Sorter(['LTV', 'TV3', 'LNK', 'Polonia', 'SAT1']);
+
+console.log(sorter.sortByAsc());
+console.log(sorter.sortByDesc());
+console.log(sorter.sortByDescLength());
+console.log(sorter.sortByAscLast());
+
+
+// 2. Sukurti klasę Piniginė. Konstruktoriuje sukurti 
+// dvi savybes popieriniaiPinigai ir metaliniaiPinigai. 
+// Parašyti metodą ideti($kiekis), kuris prideda pinigus 
+// į piniginę. Jeigu kiekis nedidesnis už 2, tai prideda 
+// prie metaliniaiPinigai, jeigu kitaip- prie 
+// popieriniaiPinigai. Parašykite metodą skaiciuoti(), 
+// kuris suskaičiuotų ir išvestų į konsolę 
+// popieriniaiPinigai ir metaliniaiPinigai sumą. 
+// Sukurti klasės objektą ir pademonstruoti veikimą. 
+// Nesvarbu kokios popierinės kupiūros ir metalinės 
+// monetos egzistuoja realiame pasaulyje.
